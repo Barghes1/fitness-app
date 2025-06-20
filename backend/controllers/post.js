@@ -153,6 +153,7 @@ exports.getPostsFilterParams = async (req, res, next) => {
 
   try {
     const posts = await Post.find(mongooseQuery)
+      .populate("user", "firstName lastName email avatarUrl") // !!!!!!!!!
       .skip(startPage * perPage - perPage)
       .limit(perPage)
       .sort(sort);

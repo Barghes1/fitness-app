@@ -1,0 +1,28 @@
+.follower-list-container {
+    padding: 20px;
+  
+    .follower-list-wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  
+    .follower-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  
+    .follower-list-empty {
+      text-align: center;
+      color: #7f8c8d;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #fdfdfd;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+  }
+  

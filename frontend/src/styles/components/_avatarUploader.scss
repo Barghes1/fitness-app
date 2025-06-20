@@ -1,0 +1,54 @@
+.avatar-uploader {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+
+  &__preview-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  &__preview {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #2ecc71;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  button {
+    padding: 10px 18px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #2980b9;
+    }
+  }
+
+  &__timestamp {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+  }
+
+  &__message {
+    margin-top: 10px;
+    color: #27ae60;
+    font-weight: 500;
+  }
+}

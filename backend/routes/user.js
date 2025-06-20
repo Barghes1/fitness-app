@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
+const { updateAwardsProgress } = require("../controllers/users"); // !!!
+
 
 //Import controllers
 const {
@@ -85,5 +87,11 @@ router.delete(
 // @desc    GET appropriate filtered users
 // @access  Public
 router.get("/", getUsersFilterParams);
+
+router.put(
+  "/progress/:awardId",
+  passport.authenticate("jwt", { session: false }),
+  updateAwardsProgress
+);
 
 module.exports = router;

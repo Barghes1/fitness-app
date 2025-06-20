@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  background-color: #d7ffe7;
+  color: #222;
+}
+
+/* ==== Глобальні стилі для форм ==== */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  background-color: #fff;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #4CAF50; /* Зелена рамка */
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3); /* Світіння */
+}
+
+/* ==== Глобальний стиль кнопок ==== */
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.home-feed {
+  max-width: 800px;
+  margin: 0 auto; 
+  padding: 2rem 1rem; 
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; 
+}

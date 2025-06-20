@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 const bcrypt = require("bcryptjs");
 
 const UserSchema = new Schema(
@@ -44,9 +43,22 @@ const UserSchema = new Schema(
       required: true,
       default: true,
     },
+
     awards: [{ type: Schema.Types.ObjectId, ref: "awards" }],
+
+    awardsProgress: [
+      {
+        award: {
+          type: Schema.Types.ObjectId,
+          ref: "awards",
+        },
+        completedTasks: [Number], 
+      },
+    ],
+
     followers: [{ type: Schema.Types.ObjectId, ref: "users" }],
     followedBy: [{ type: Schema.Types.ObjectId, ref: "users" }],
+
     date: {
       type: Date,
       default: Date.now,
@@ -55,6 +67,7 @@ const UserSchema = new Schema(
   { strict: false },
 );
 
+// Перевірка пароля
 UserSchema.methods.comparePassword = function (candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
     if (err) return cb(err);

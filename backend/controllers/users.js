@@ -267,12 +267,14 @@ exports.updatePassword = (req, res) => {
 };
 
 // Controller for getting existing user
+// Controller for getting existing user
 exports.getUserById = (req, res) => {
   User.findOne({ _id: req.params.id })
     .select("-login -password")
     .populate("awards")
     .populate("followedBy", "firstName lastName email avatarUrl")
     .populate("followers", "firstName lastName email avatarUrl")
+    .populate("awardsProgress.award") // <--- ДОДАНО
     .then((user) => {
       if (!user) {
         return res.status(404).json({
@@ -288,6 +290,7 @@ exports.getUserById = (req, res) => {
       }),
     );
 };
+
 
 exports.addAwardToUser = async (req, res, next) => {
   let awardToAdd;
@@ -546,3 +549,37 @@ exports.getUsersFilterParams = async (req, res, next) => {
     });
   }
 };
+
+// @desc    Update awards progress for a user
+exports.updateAwardsProgress = async (req, res) => {
+  const { awardId } = req.params;
+  const { completedTasks } = req.body;
+
+  if (!Array.isArray(completedTasks)) {
+    return res.status(400).json({ message: "completedTasks must be an array of indices." });
+  }
+
+  try {
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    const existingProgressIndex = user.awardsProgress.findIndex((entry) =>
+      entry.award.toString() === awardId
+    );
+
+    if (existingProgressIndex > -1) {
+      user.awardsProgress[existingProgressIndex].completedTasks = completedTasks;
+    } else {
+      user.awardsProgress.push({ award: awardId, completedTasks });
+    }
+
+    await user.save();
+    return res.json({ message: "Progress updated", awardsProgress: user.awardsProgress });
+  } catch (err) {
+    return res.status(400).json({ message: `Error happened on server: "${err}"` });
+  }
+};
+

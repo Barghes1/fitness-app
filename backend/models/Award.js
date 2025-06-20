@@ -10,6 +10,12 @@ const AwardSchema = new Schema(
       type: String,
       required: true,
     },
+    tasks: [
+      {
+        type: String, 
+        required: true,
+      },
+    ],
     date: {
       type: Date,
       default: Date.now,

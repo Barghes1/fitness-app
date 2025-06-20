@@ -1,0 +1,81 @@
+.main-header {
+  background-color: #fff;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+
+  &__logo a {
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #2ecc71;
+    text-decoration: none;
+  }
+
+  &__nav a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+
+    &:hover {
+      color: #2ecc71;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__user {
+    font-weight: bold;
+  }
+
+  &__logout {
+    background-color: transparent;
+    border: 1px solid #d72d1a;
+    color: #d72d1a;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  
+    &:hover {
+      background-color: #d72d1a;
+      color: #fff;
+    }
+  }
+  
+
+  a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+
+    &.active {
+      color: #2ecc71;
+      border-bottom: 2px solid #2ecc71;
+      padding-bottom: 2px;
+    }
+
+    &:hover {
+      color: #2ecc71;
+    }
+  }
+
+  &__settings {
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+}

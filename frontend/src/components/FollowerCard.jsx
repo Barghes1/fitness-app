@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FollowButton from './FollowButton';
+import FollowButton from './FollowButton.jsx';
 import '../styles/components/_followerCard.scss';
 
 const FollowerCard = ({ user }) => {

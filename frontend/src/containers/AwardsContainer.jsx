@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-import AwardForm from '../components/AwardForm';
-import AwardCard from '../components/AwardCard';
+import AwardForm from '../components/AwardForm.jsx';
+import AwardCard from '../components/AwardCard.jsx';
 import '../styles/components/_awardsContainer.scss';
 import { AuthContext } from '../context/AuthContext';
 

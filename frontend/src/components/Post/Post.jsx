@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
 import '../../styles/components/_post.scss';
-import Avatar from '../Avatar';
+import Avatar from '../Avatar.jsx';
 import { FaRegHeart, FaHeart, FaRegCommentDots } from 'react-icons/fa';
-import Comment from '../Comment';
+import Comment from '../Comment.jsx';
 
 const Post = ({ post }) => {
   const { user, token } = useContext(AuthContext);

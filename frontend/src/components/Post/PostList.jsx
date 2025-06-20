@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-import Post from './Post';
-import PostForm from './PostForm';
+import Post from './Post.jsx';
+import PostForm from './PostForm.jsx';
 import axios from 'axios';
 
 const PostList = ({ userId, awardId }) => {

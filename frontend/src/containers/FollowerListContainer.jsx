@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import FollowerCard from '../components/FollowerCard';
+import FollowerCard from '../components/FollowerCard.jsx';
 import '../styles/components/_followerListContainer.scss';
 import { AuthContext } from '../context/AuthContext';
 

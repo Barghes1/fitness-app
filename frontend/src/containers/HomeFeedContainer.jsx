@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Post from '../components/Post/Post';
-import SearchBar from '../components/SearchBar';
+import Post from '../components/Post/Post.jsx';
+import SearchBar from '../components/SearchBar.jsx';
 import '../styles/components/_homeFeed.scss'
 
 const HomeFeedContainer = () => {

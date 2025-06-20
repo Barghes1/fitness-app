@@ -1,70 +1,111 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+```md
+# 🚀 Fitness App
 
-In the project directory, you can run:
+Цей проєкт — фітнес-додаток з підтримкою користувачів, нагород, постів, коментарів та підписок. Побудовано на основі **React**, з використанням **MongoDB**, **JWT**, **SCSS**, **Axios**, **Jest** та **Redux/Context**.
+
+## 📁 Структура проєкту
+
+```
+
+src/
+├── assets/         # Зображення, іконки, статичні ресурси
+├── components/     # Повторно використовувані React-компоненти
+├── containers/     # Основні сторінки та великі компоненти
+├── context/        # Контексти (наприклад, AuthContext)
+├── pages/          # Роут-компоненти (маршрути)
+├── redux/          # Слайси та store Redux (якщо використовується)
+├── styles/         # SCSS стилі, розбиті по модулях
+├── App.js          # Головний компонент
+├── index.js        # Точка входу
+└── setupTests.js   # Налаштування для Jest та Testing Library
+
+````
+
+## 📦 Встановлення
+
+```
+npm install
+
+````
+
+## ⚙️ Скрипти
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Запускає застосунок у режимі розробки.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Відкрий [http://localhost:3000](http://localhost:3000) у браузері.
+
+---
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Запускає юніт-тести в інтерактивному режимі.
+
+📁 Тести зберігаються у `src/components/__tests__/`.
+
+---
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Збирає застосунок для продакшену у директорію `build/`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**⚠️ Увага:** необоротна дія. Копіює конфігурацію Webpack, Babel, ESLint у проєкт.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🧪 Тестування
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* **Юніт-тести** реалізовано з використанням **Jest** + **React Testing Library**
+* **Інтеграційні тести** взаємодіють з REST API (MongoDB)
+* Файл `setupTests.js` містить налаштування середовища
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🔒 Авторизація
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Реалізовано через JWT
+* Зберігання токена в `localStorage`
+* Захист приватних маршрутів через `<PrivateRoute />`
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## ✨ Функціональність
 
-### Analyzing the Bundle Size
+* ✅ Реєстрація та вхід
+* ✅ Пости та коментарі
+* ✅ Список нагород (Awards)
+* ✅ Досягнення (Progress tracking)
+* ✅ Підписки (Followers)
+* ✅ Редагування профілю
+* ✅ Завантаження аватарки
+* ✅ Адаптивна верстка
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🧠 Корисні ресурси
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* [Документація Create React App](https://create-react-app.dev/)
+* [React Docs](https://reactjs.org/)
+* [Jest](https://jestjs.io/)
+* [React Testing Library](https://testing-library.com/)
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+> 🔧 Проєкт знаходиться в активній розробці. Всі баги або пропозиції — вітаються!
 
-### Deployment
+> Для авторізації як адмін використовуйте: Login: admin, Password: qwerty1234
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+---
+

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import ProfileForm from '../components/ProfileForm';
-import AvatarUploader from '../components/AvatarUploader';
+import ProfileForm from '../components/ProfileForm.jsx';
+import AvatarUploader from '../components/AvatarUploader.jsx';
 import '../styles/components/_accountContainer.scss';
 
 const AccountSettingsContainer = () => {

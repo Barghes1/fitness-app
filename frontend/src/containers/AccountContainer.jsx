@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
-import Avatar from '../components/Avatar';
-import FollowButton from '../components/FollowButton';
-import PostList from '../components/Post/PostList';
+import Avatar from '../components/Avatar.jsx';
+import FollowButton from '../components/FollowButton.jsx';
+import PostList from '../components/Post/PostList.jsx';
 import { useParams } from 'react-router-dom';
 import '../styles/components/_accountContainer.scss';
 import { FaCheckCircle, FaClock } from 'react-icons/fa';

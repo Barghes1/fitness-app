@@ -1,19 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import Home from './pages/Home.jsx';
+import Login from './pages/Login.jsx';
+import Signup from './pages/Signup.jsx';
 
-import Account from './pages/Account';
-import AccountSettings from './pages/AccountSettings';
-import Awards from './pages/Awards';
-import FollowersList from './pages/FollowersList';
-import Header from './components/Header';
+import Account from './pages/Account.jsx';
+import AccountSettings from './pages/AccountSettings.jsx';
+import Awards from './pages/Awards.jsx';
+import FollowersList from './pages/FollowersList.jsx';
+import Header from './components/Header.jsx';
 
-import NotFound from './pages/NotFound';
+import NotFound from './pages/NotFound.jsx';
 
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute.jsx';
 
 function App() {
   return (

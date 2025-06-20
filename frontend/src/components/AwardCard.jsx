@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import PostList from './Post/PostList';
+import PostList from './Post/PostList.jsx';
 import '../styles/components/_awardCard.scss';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
-import Progress from './ProgressBar';
+import Progress from './ProgressBar.jsx';
 
 const AwardCard = ({ award }) => {
   const { user, token } = useContext(AuthContext);

@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
         .then(res => setUser(res.data))
         .catch(err => {
           console.error('Failed to fetch user', err);
-          logout(); // очищаємо стан при невдачі
+          logout();
         });
     } else {
       delete axios.defaults.headers.common['Authorization'];

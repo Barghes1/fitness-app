@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import '../styles/components/_profileForm.scss';

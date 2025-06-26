@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import AccountContainer from '../containers/AccountContainer';
+import AccountContainer from '../containers/AccountContainer.jsx';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 

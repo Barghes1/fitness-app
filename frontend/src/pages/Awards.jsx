@@ -1,5 +1,5 @@
 import React from 'react';
-import AwardsContainer from '../containers/AwardsContainer';
+import AwardsContainer from '../containers/AwardsContainer.jsx';
 
 const Awards = () => {
   return (

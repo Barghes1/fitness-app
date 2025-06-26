@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeFeedContainer from '../containers/HomeFeedContainer';
+import HomeFeedContainer from '../containers/HomeFeedContainer.jsx';
 
 const Home = () => {
   return (

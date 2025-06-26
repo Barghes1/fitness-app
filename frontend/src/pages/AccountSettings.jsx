@@ -1,5 +1,5 @@
 import React from 'react';
-import AccountSettingsContainer from '../containers/AccountSettingsContainer';
+import AccountSettingsContainer from '../containers/AccountSettingsContainer.jsx';
 
 const AccountSettings = () => {
   return (

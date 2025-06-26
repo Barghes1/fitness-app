@@ -12,7 +12,7 @@ const HomeFeedContainer = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/api/posts');
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/posts`);
         setPosts(res.data.posts.reverse());
       } catch (err) {
         console.error('Помилка при завантаженні постів:', err.response?.data || err.message);

@@ -12,7 +12,7 @@ const AwardsContainer = () => {
   useEffect(() => {
     const fetchAwards = async () => {
       try {
-        const res = await axios.get('http://localhost:4000/api/awards');
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/awards`);
         setAwards(res.data);
       } catch (err) {
         console.error('Не вдалося завантажити нагороди:', err);

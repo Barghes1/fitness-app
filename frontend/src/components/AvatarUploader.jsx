@@ -19,7 +19,7 @@ const AvatarUploader = ({ currentAvatar }) => {
 
       try {
         await axios.put(
-          'http://localhost:4000/api/users',
+          `${process.env.REACT_APP_API_URL}/api/users`,
           { avatarUrl: base64Image },
           { headers: { Authorization: token } }
         );

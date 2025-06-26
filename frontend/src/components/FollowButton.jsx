@@ -16,7 +16,7 @@ const FollowButton = ({ targetUserId }) => {
 
     const fetchFollowingStatus = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/api/users/${user._id}`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${user._id}`);
         const isAlreadyFollowing = res.data.followers?.some(f => f._id === targetUserId);
         setIsFollowing(isAlreadyFollowing);
       } catch (err) {
@@ -34,11 +34,11 @@ const FollowButton = ({ targetUserId }) => {
 
     try {
       if (isFollowing) {
-        await axios.delete(`http://localhost:4000/api/users/followers/${targetUserId}`, {
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/followers/${targetUserId}`, {
           headers: { Authorization: token },
         });
       } else {
-        await axios.put(`http://localhost:4000/api/users/followers/${targetUserId}`, {}, {
+        await axios.put(`${process.env.REACT_APP_API_URL}/api/users/followers/${targetUserId}`, {}, {
           headers: { Authorization: token },
         });
       }

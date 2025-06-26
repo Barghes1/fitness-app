@@ -21,7 +21,7 @@ const AwardCard = ({ award }) => {
       if (!user || isAdmin || !award._id) return;
 
       try {
-        const res = await axios.get(`http://localhost:4000/api/users/${user._id}`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${user._id}`);
         const progress = res.data.awardsProgress?.find(
           (entry) => entry.award === award._id || entry.award?._id === award._id
         );
@@ -49,7 +49,7 @@ const AwardCard = ({ award }) => {
 
     try {
       await axios.put(
-        `http://localhost:4000/api/users/progress/${award._id}`,
+        `${process.env.REACT_APP_API_URL}/api/users/progress/${award._id}`,
         { completedTasks: updatedTasks },
         { headers: { Authorization: token } }
       );
@@ -63,7 +63,7 @@ const AwardCard = ({ award }) => {
       <div className="award-card__header">
         {award.imageUrl && (
           <div className="award-card__icon">
-            <img src={`http://localhost:4000${award.imageUrl}`} alt="award" />
+            <img src={`${process.env.REACT_APP_API_URL}${award.imageUrl}`} alt="award" />
           </div>
         )}
         <p>{award.content}</p>

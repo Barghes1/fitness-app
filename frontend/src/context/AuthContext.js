@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
       const decoded = jwtDecode(token);
       const userId = decoded.id;
 
-      axios.get(`http://localhost:4000/api/users/${userId}`)
+      axios.get(`${process.env.REACT_APP_API_URL}/api/users/${userId}`)
         .then(res => setUser(res.data))
         .catch(err => {
           console.error('Failed to fetch user', err);

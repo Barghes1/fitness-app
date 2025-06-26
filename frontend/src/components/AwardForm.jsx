@@ -44,7 +44,7 @@ const AwardForm = ({ onCreate }) => {
       formData.append('image', imageFile);
 
       try {
-        const res = await axios.post('http://localhost:4000/api/upload', formData, {
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, formData, {
           headers: {
             Authorization: token,
             'Content-Type': 'multipart/form-data',
@@ -65,7 +65,7 @@ const AwardForm = ({ onCreate }) => {
     };
 
     try {
-      const res = await axios.post('http://localhost:4000/api/awards', newAward, {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/awards`, newAward, {
         headers: {
           Authorization: token,
         },

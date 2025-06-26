@@ -31,7 +31,7 @@ const AuthForm = ({ mode }) => {
   
     try {
       const res = await axios.post(
-        isLogin ? 'http://localhost:4000/api/users/login' : 'http://localhost:4000/api/users',
+        isLogin ? `${process.env.REACT_APP_API_URL}/api/users/login` : `${process.env.REACT_APP_API_URL}/api/users`,
         isLogin
           ? { loginOrEmail: form.loginOrEmail, password: form.password }
           : {

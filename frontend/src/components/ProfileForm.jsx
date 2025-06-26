@@ -27,7 +27,7 @@ const ProfileForm = ({ name: initialName, email: initialEmail }) => {
       if (login !== user.login) updatedInfo.login = login;
 
       if (Object.keys(updatedInfo).length > 0) {
-        await axios.put('http://localhost:4000/api/users', updatedInfo, {
+        await axios.put(`${process.env.REACT_APP_API_URL}/api/users`, updatedInfo, {
           headers: { Authorization: token },
         });
       }
@@ -45,7 +45,7 @@ const ProfileForm = ({ name: initialName, email: initialEmail }) => {
         }
 
         await axios.put(
-          'http://localhost:4000/api/users/update-password',
+          `${process.env.REACT_APP_API_URL}/api/users/update-password`,
           { password: currentPassword, newPassword },
           { headers: { Authorization: token } }
         );

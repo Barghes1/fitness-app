@@ -15,7 +15,7 @@ const Account = () => {
     } else {
       const fetchUser = async () => {
         try {
-          const res = await axios.get(`http://localhost:4000/api/users/${id}`);
+          const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${id}`);
           setProfileUser(res.data);
         } catch (err) {
           console.error('Не вдалося завантажити профіль:', err);

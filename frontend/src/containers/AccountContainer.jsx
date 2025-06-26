@@ -19,7 +19,7 @@ const AccountContainer = ({ profileUser: initialProfileUser }) => {
     const fetchProfileUser = async () => {
       try {
         const userId = id || user._id;
-        const res = await axios.get(`http://localhost:4000/api/users/${userId}`, {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${userId}`, {
           headers: { Authorization: token },
         });
         setProfileUser(res.data);
@@ -63,7 +63,7 @@ const AccountContainer = ({ profileUser: initialProfileUser }) => {
                 <div className="achievement__title">
                   {award.imageUrl && (
                     <img
-                      src={award.imageUrl.startsWith('/uploads') ? `http://localhost:4000${award.imageUrl}` : award.imageUrl}
+                      src={award.imageUrl.startsWith('/uploads') ? `${process.env.REACT_APP_API_URL}${award.imageUrl}` : award.imageUrl}
                       alt="icon"
                       className="achievement__icon"
                     />

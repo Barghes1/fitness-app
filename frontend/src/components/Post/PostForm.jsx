@@ -28,7 +28,7 @@ const PostForm = ({ onSubmit, awardId }) => {
       formData.append('image', imageFile);
 
       try {
-        const uploadRes = await axios.post('http://localhost:4000/api/upload', formData, {
+        const uploadRes = await axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, formData, {
           headers: {
             Authorization: token,
             'Content-Type': 'multipart/form-data',
@@ -51,7 +51,7 @@ const PostForm = ({ onSubmit, awardId }) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:4000/api/posts', postData, {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/posts`, postData, {
         headers: { Authorization: token },
       });
 

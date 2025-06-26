@@ -16,7 +16,7 @@ const PostList = ({ userId, awardId }) => {
         if (userId) params.user = userId;
         if (awardId) params.award = awardId;
 
-        const res = await axios.get('http://localhost:4000/api/posts', {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/posts`, {
           params,
         });
 

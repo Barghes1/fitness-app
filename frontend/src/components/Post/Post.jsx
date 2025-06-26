@@ -20,7 +20,7 @@ const Post = ({ post }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/api/comments/post/${post._id}`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/comments/post/${post._id}`);
         const formatted = res.data.map(c => ({
           id: c._id,
           text: c.content,
@@ -39,7 +39,7 @@ const Post = ({ post }) => {
   const handleLike = async () => {
     try {
       const res = await axios.patch(
-        `http://localhost:4000/api/posts/${post._id}`,
+        `${process.env.REACT_APP_API_URL}/api/posts/${post._id}`,
         {},
         { headers: { Authorization: token } }
       );
@@ -55,7 +55,7 @@ const Post = ({ post }) => {
 
     try {
       const res = await axios.post(
-        `http://localhost:4000/api/comments`,
+        `${process.env.REACT_APP_API_URL}/api/comments`,
         {
           post: post._id,
           content: commentText
@@ -80,7 +80,7 @@ const Post = ({ post }) => {
   };
 
   const getFullImageUrl = (relativeUrl) => {
-    return `http://localhost:4000${relativeUrl}`;
+    return `${process.env.REACT_APP_API_URL}${relativeUrl}`;
   };
 
   return (

@@ -11,7 +11,7 @@ const FollowerListContainer = () => {
   useEffect(() => {
     const fetchFollowers = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/api/users/${user._id}`, {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${user._id}`, {
           headers: { Authorization: token }
         });
 

@@ -7,10 +7,12 @@ import PostList from '../components/Post/PostList.jsx';
 import { useParams } from 'react-router-dom';
 import '../styles/components/_accountContainer.scss';
 import { FaCheckCircle, FaClock } from 'react-icons/fa';
+import defaultAvatar from '../assets/user.png';
+
 
 const AccountContainer = ({ profileUser: initialProfileUser }) => {
   const { user, token } = useContext(AuthContext);
-  const { id } = useParams(); // якщо маршрут виглядає як /account/:id
+  const { id } = useParams();
   const [profileUser, setProfileUser] = useState(initialProfileUser || null);
 
   const isOwnProfile = !id || user._id === id;
@@ -87,7 +89,7 @@ const AccountContainer = ({ profileUser: initialProfileUser }) => {
   return (
     <div className="account-container">
       <div className="account-container__header">
-        <Avatar url={profileUser.avatarUrl || 'https://i.pravatar.cc/100'} />
+        <Avatar url={profileUser.avatarUrl || defaultAvatar} />
         <div className="account-container__info">
           <h2>{profileUser.firstName} {profileUser.lastName}</h2>
           <p>{profileUser.followedBy?.length || 0} followers</p>

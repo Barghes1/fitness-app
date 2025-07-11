@@ -3,6 +3,8 @@ import axios from 'axios';
 import FollowerCard from '../components/FollowerCard.jsx';
 import '../styles/components/_followerListContainer.scss';
 import { AuthContext } from '../context/AuthContext';
+import defaultAvatar from '../assets/user.png';
+
 
 const FollowerListContainer = () => {
   const { user, token } = useContext(AuthContext);
@@ -20,7 +22,7 @@ const FollowerListContainer = () => {
         const formatted = followedByUsers.map((u) => ({
           _id: u._id,
           name: `${u.firstName} ${u.lastName}`,
-          avatarUrl: u.avatarUrl || 'https://i.pravatar.cc/100',
+          avatarUrl: u.avatarUrl || defaultAvatar,
           isFollowing: user.followers.includes(u._id)
         }));
 

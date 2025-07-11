@@ -6,10 +6,12 @@ import '../../styles/components/_post.scss';
 import Avatar from '../Avatar.jsx';
 import { FaRegHeart, FaHeart, FaRegCommentDots } from 'react-icons/fa';
 import Comment from '../Comment.jsx';
+import defaultAvatar from '../../assets/user.png';
 
 const Post = ({ post }) => {
   const { user, token } = useContext(AuthContext);
-  const avatarUrl = post.user?.avatarUrl || 'https://i.pravatar.cc/100';
+  const avatarUrl = post.user?.avatarUrl || defaultAvatar;
+  //'https://i.pravatar.cc/100'
 
   const [likes, setLikes] = useState(post.likes || []);
   const [isLiked, setIsLiked] = useState(post.likes?.includes(user._id));

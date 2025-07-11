@@ -19,7 +19,6 @@ const ProfileForm = ({ name: initialName, email: initialEmail }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // 1. Оновлення основної інформації (тільки змінені поля)
       const updatedInfo = {};
       if (firstName !== user.firstName) updatedInfo.firstName = firstName;
       if (lastName !== user.lastName) updatedInfo.lastName = lastName;
@@ -32,7 +31,6 @@ const ProfileForm = ({ name: initialName, email: initialEmail }) => {
         });
       }
 
-      // 2. Оновлення пароля, якщо заповнені поля
       if (currentPassword || newPassword || confirmNewPassword) {
         if (!currentPassword || !newPassword || !confirmNewPassword) {
           setMessage('Будь ласка, заповніть всі поля для зміни пароля');

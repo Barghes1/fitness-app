@@ -7,7 +7,7 @@ import Avatar from '../Avatar.jsx';
 import { FaRegHeart, FaHeart, FaRegCommentDots } from 'react-icons/fa';
 import Comment from '../Comment.jsx';
 import defaultAvatar from '../../assets/user.png';
-import notFoundImage from '../../assets/404.png';
+import notFoundImage from '../../assets/404.jpg';
 
 const Post = ({ post }) => {
   const { user, token } = useContext(AuthContext);

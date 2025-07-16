@@ -4,7 +4,7 @@ import '../styles/components/_awardCard.scss';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import Progress from './ProgressBar.jsx';
-import notFoundImage from '../assets/404.png';
+import notFoundImage from '../assets/404.jpg';
 
 const AwardCard = ({ award, onDelete }) => {
   const { user, token } = useContext(AuthContext);

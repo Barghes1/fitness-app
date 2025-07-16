@@ -11,7 +11,6 @@ import defaultAvatar from '../../assets/user.png';
 const Post = ({ post }) => {
   const { user, token } = useContext(AuthContext);
   const avatarUrl = post.user?.avatarUrl || defaultAvatar;
-  //'https://i.pravatar.cc/100'
 
   const [likes, setLikes] = useState(post.likes || []);
   const [isLiked, setIsLiked] = useState(post.likes?.includes(user._id));
@@ -22,12 +21,14 @@ const Post = ({ post }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/comments/post/${post._id}`);
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/comments/post/${post._id}`
+        );
         const formatted = res.data.map(c => ({
           id: c._id,
           text: c.content,
           author: `${c.user.firstName} ${c.user.lastName}`,
-          date: new Date(c.date).toLocaleString()
+          date: new Date(c.date).toLocaleString(),
         }));
         setComments(formatted.reverse());
       } catch (err) {
@@ -60,10 +61,10 @@ const Post = ({ post }) => {
         `${process.env.REACT_APP_API_URL}/api/comments`,
         {
           post: post._id,
-          content: commentText
+          content: commentText,
         },
         {
-          headers: { Authorization: token }
+          headers: { Authorization: token },
         }
       );
 
@@ -71,7 +72,7 @@ const Post = ({ post }) => {
         id: res.data._id,
         text: res.data.content,
         author: `${res.data.user.firstName} ${res.data.user.lastName}`,
-        date: new Date(res.data.date).toLocaleString()
+        date: new Date(res.data.date).toLocaleString(),
       };
 
       setComments([newComment, ...comments]);
@@ -81,7 +82,7 @@ const Post = ({ post }) => {
     }
   };
 
-  const getFullImageUrl = (relativeUrl) => {
+  const getFullImageUrl = relativeUrl => {
     return `${process.env.REACT_APP_API_URL}${relativeUrl}`;
   };
 
@@ -121,7 +122,7 @@ const Post = ({ post }) => {
           <textarea
             placeholder="Залишити коментар..."
             value={commentText}
-            onChange={(e) => setCommentText(e.target.value)}
+            onChange={e => setCommentText(e.target.value)}
           />
           <button onClick={handleAddComment}>Надіслати</button>
         </div>
@@ -129,7 +130,7 @@ const Post = ({ post }) => {
 
       {comments.length > 0 && (
         <div className="post__comments">
-          {comments.map((comment) => (
+          {comments.map(comment => (
             <Comment key={comment.id} comment={comment} />
           ))}
         </div>

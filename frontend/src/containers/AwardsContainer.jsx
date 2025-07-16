@@ -22,44 +22,24 @@ const AwardsContainer = () => {
     fetchAwards();
   }, []);
 
-  const handleAwardCreate = (newAward) => {
-    setAwards((prevAwards) => [newAward, ...prevAwards]);
+  const handleAwardCreate = newAward => {
+    setAwards(prevAwards => [newAward, ...prevAwards]);
   };
 
-  const handleDelete = (index) => {
-    const updated = [...awards];
-    updated.splice(index, 1);
-    setAwards(updated);
-  };
-
-  const handleEdit = (index) => {
-    const updated = [...awards];
-    const content = prompt('Оновіть опис досягнення:', updated[index].content);
-    if (content !== null && content.trim() !== '') {
-      updated[index].content = content;
-      setAwards(updated);
-    }
+  const handleAwardDelete = deletedId => {
+    setAwards(prevAwards => prevAwards.filter(award => award._id !== deletedId));
   };
 
   return (
     <div className="awards-container">
-      {user?.isAdmin && (
-        <AwardForm onCreate={handleAwardCreate} />
-      )}
+      {user?.isAdmin && <AwardForm onCreate={handleAwardCreate} />}
 
       {awards.length === 0 ? (
-        <div className="awards-empty">
-          Наразі немає доступних досягнень.
-        </div>
+        <div className="awards-empty">Наразі немає доступних досягнень.</div>
       ) : (
         <div className="awards-list">
-          {awards.map((award, index) => (
-            <AwardCard
-              key={award._id || index}
-              award={award}
-              onDelete={() => handleDelete(index)}
-              onEdit={() => handleEdit(index)}
-            />
+          {awards.map(award => (
+            <AwardCard key={award._id} award={award} onDelete={handleAwardDelete} />
           ))}
         </div>
       )}

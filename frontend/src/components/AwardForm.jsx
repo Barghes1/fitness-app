@@ -12,7 +12,7 @@ const AwardForm = ({ onCreate }) => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
 
-  const handleImageChange = (e) => {
+  const handleImageChange = e => {
     const file = e.target.files[0];
     if (file) {
       setImageFile(file);
@@ -22,18 +22,16 @@ const AwardForm = ({ onCreate }) => {
 
   const handleAddTask = () => {
     if (newTask.trim()) {
-      setTasks([...tasks, newTask.trim()]);
+      setTasks(prev => [...prev, newTask.trim()]);
       setNewTask('');
     }
   };
 
-  const handleRemoveTask = (index) => {
-    const updated = [...tasks];
-    updated.splice(index, 1);
-    setTasks(updated);
+  const handleRemoveTask = index => {
+    setTasks(prev => prev.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (!content.trim()) return;
 
@@ -51,7 +49,7 @@ const AwardForm = ({ onCreate }) => {
           },
         });
 
-        imageUrl = res.data.imageUrl; // приклад: '/uploads/image-1718728237.png'
+        imageUrl = res.data.imageUrl;
       } catch (err) {
         console.error('Помилка при завантаженні зображення:', err);
         return;
@@ -72,7 +70,7 @@ const AwardForm = ({ onCreate }) => {
       });
 
       if (res.data) {
-        onCreate(res.data);
+        onCreate(res.data); // Передаємо назад повну нагороду з imageUrl
         setContent('');
         setImageFile(null);
         setImagePreview('');
@@ -91,7 +89,7 @@ const AwardForm = ({ onCreate }) => {
       <textarea
         placeholder="Опис досягнення"
         value={content}
-        onChange={(e) => setContent(e.target.value)}
+        onChange={e => setContent(e.target.value)}
         rows={3}
         required
       />
@@ -109,7 +107,7 @@ const AwardForm = ({ onCreate }) => {
           type="text"
           placeholder="Нове завдання"
           value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
+          onChange={e => setNewTask(e.target.value)}
         />
         <button type="button" onClick={handleAddTask}>
           Додати завдання
@@ -121,7 +119,9 @@ const AwardForm = ({ onCreate }) => {
           {tasks.map((task, index) => (
             <li key={index}>
               {task}
-              <button type="button" onClick={() => handleRemoveTask(index)}>✖</button>
+              <button type="button" onClick={() => handleRemoveTask(index)}>
+                ✖
+              </button>
             </li>
           ))}
         </ul>

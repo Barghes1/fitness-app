@@ -5,7 +5,7 @@ import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import Progress from './ProgressBar.jsx';
 
-const AwardCard = ({ award }) => {
+const AwardCard = ({ award, onDelete }) => {
   const { user, token } = useContext(AuthContext);
   const [completedTasks, setCompletedTasks] = useState([]);
 
@@ -23,7 +23,7 @@ const AwardCard = ({ award }) => {
       try {
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${user._id}`);
         const progress = res.data.awardsProgress?.find(
-          (entry) => entry.award === award._id || entry.award?._id === award._id
+          entry => entry.award === award._id || entry.award?._id === award._id
         );
 
         if (progress) {
@@ -37,10 +37,10 @@ const AwardCard = ({ award }) => {
     fetchProgress();
   }, [user, award._id, isAdmin]);
 
-  const handleToggle = async (taskIndex) => {
+  const handleToggle = async taskIndex => {
     let updatedTasks;
     if (completedTasks.includes(taskIndex)) {
-      updatedTasks = completedTasks.filter((i) => i !== taskIndex);
+      updatedTasks = completedTasks.filter(i => i !== taskIndex);
     } else {
       updatedTasks = [...completedTasks, taskIndex];
     }
@@ -58,21 +58,42 @@ const AwardCard = ({ award }) => {
     }
   };
 
+  const getImageSrc = url => {
+    return url?.startsWith('http') ? url : `${process.env.REACT_APP_API_URL}${url}`;
+  };
+
+  const handleDelete = async () => {
+    if (!window.confirm('Ти впевнений, що хочеш видалити цю нагороду?')) return;
+
+    try {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/awards/${award._id}`, {
+        headers: { Authorization: token },
+      });
+      if (onDelete) onDelete(award._id); // Оповістити контейнер
+    } catch (err) {
+      console.error('Помилка при видаленні нагороди:', err.response?.data || err.message);
+    }
+  };
+
   return (
     <div className={`award-card ${isCompletedByUser ? 'completed' : ''}`}>
       <div className="award-card__header">
         {award.imageUrl && (
           <div className="award-card__icon">
-            <img src={`${process.env.REACT_APP_API_URL}${award.imageUrl}`} alt="award" />
+            <img src={getImageSrc(award.imageUrl)} alt="award" />
           </div>
         )}
         <p>{award.content}</p>
+
+        {isAdmin && (
+          <button className="award-card__delete-button" onClick={handleDelete}>
+            🗑 Видалити
+          </button>
+        )}
       </div>
 
       <div className="award-card__content">
-        <span className="award-card__date">
-          {new Date(award.date).toLocaleDateString()}
-        </span>
+        <span className="award-card__date">{new Date(award.date).toLocaleDateString()}</span>
 
         {Array.isArray(award.tasks) && award.tasks.length > 0 && (
           <>
@@ -96,9 +117,7 @@ const AwardCard = ({ award }) => {
         )}
       </div>
 
-      {isCompletedByUser && (
-        <span className="award-card__badge">Completed</span>
-      )}
+      {isCompletedByUser && <span className="award-card__badge">Completed</span>}
 
       <div className="award-card__posts">
         <PostList awardId={award._id} />

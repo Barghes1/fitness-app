@@ -4,6 +4,7 @@ import '../styles/components/_awardCard.scss';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import Progress from './ProgressBar.jsx';
+import notFoundImage from '../assets/404.png';
 
 const AwardCard = ({ award, onDelete }) => {
   const { user, token } = useContext(AuthContext);
@@ -69,7 +70,7 @@ const AwardCard = ({ award, onDelete }) => {
       await axios.delete(`${process.env.REACT_APP_API_URL}/api/awards/${award._id}`, {
         headers: { Authorization: token },
       });
-      if (onDelete) onDelete(award._id); // Оповістити контейнер
+      if (onDelete) onDelete(award._id);
     } catch (err) {
       console.error('Помилка при видаленні нагороди:', err.response?.data || err.message);
     }
@@ -80,7 +81,14 @@ const AwardCard = ({ award, onDelete }) => {
       <div className="award-card__header">
         {award.imageUrl && (
           <div className="award-card__icon">
-            <img src={getImageSrc(award.imageUrl)} alt="award" />
+            <img
+              src={getImageSrc(award.imageUrl)}
+              alt="award"
+              onError={e => {
+                e.target.onerror = null;
+                e.target.src = notFoundImage;
+              }}
+            />
           </div>
         )}
         <p>{award.content}</p>

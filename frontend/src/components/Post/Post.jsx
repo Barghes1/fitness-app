@@ -7,6 +7,7 @@ import Avatar from '../Avatar.jsx';
 import { FaRegHeart, FaHeart, FaRegCommentDots } from 'react-icons/fa';
 import Comment from '../Comment.jsx';
 import defaultAvatar from '../../assets/user.png';
+import notFoundImage from '../../assets/404.png';
 
 const Post = ({ post }) => {
   const { user, token } = useContext(AuthContext);
@@ -104,7 +105,14 @@ const Post = ({ post }) => {
 
       {post.imageUrls?.length > 0 && (
         <div className="post__image">
-          <img src={getFullImageUrl(post.imageUrls[0])} alt="Post" />
+          <img
+            src={getFullImageUrl(post.imageUrls[0])}
+            alt="Post"
+            onError={e => {
+              e.target.onerror = null;
+              e.target.src = notFoundImage;
+            }}
+          />
         </div>
       )}
 
